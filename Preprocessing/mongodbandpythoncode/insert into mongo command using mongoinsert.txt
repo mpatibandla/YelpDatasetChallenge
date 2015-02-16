@@ -1,0 +1,102 @@
+MONGO LOG FILE :
+==============
+
+
+C:\Users\giridhar>mongo
+MongoDB shell version: 2.4.9
+connecting to: test
+> show dbs
+dbName  0.453125GB
+local   0.078125GB
+test    (empty)
+yelpdata        0.453125GB
+> use yelpdata
+switched to db yelpdata
+> show collections
+business
+categories
+reviews
+system.indexes
+tip
+>
+>
+>
+>
+> db.tip.find().count()
+403210
+
+
+Inserting json files data into Mongo
+
+
+Append the environment path variable to point to mongoimport command path.
+Open command prompt , Copy the one command at a time and paste it in command prompt.
+cd  E:\Project\Files
+E:\Project\Files>mongoimport --db yelpdata --collection business --file yelp_academic_dataset_business.json
+
+
+E:\Project\Files> mongoimport --db yelpdata --collection tip --file yelp_academic_dataset_tip.json
+
+
+
+E:\Project\Files>mongoimport --db yelpdata --collection reviews --file yelp_academic_dataset_review.json
+
+
+
+E:\Project\Files>mongoimport --db yelpdata --collection checkin --file yelp_academic_dataset_checkin.json
+
+
+E:\Project\Files>mongoimport --db yelpdata --collection user --file yelp_academic_dataset_user.json
+
+
+
+
+
+
+Validate the data present in Mongo . See below log. 
+
+open new command prompt 
+
+
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\giridhar>mongo
+MongoDB shell version: 2.4.9
+connecting to: test
+> show dbs
+local   0.078125GB
+test    (empty)
+yelpdata        3.9521484375GB
+> use yelpdata
+switched to db yelpdata
+> show collections
+business
+categories
+checkin
+reviews
+system.indexes
+tip
+user
+> db.business.find().count()
+42153
+> db.checkin.find().count()
+31617
+> db.reviews.find().count()
+1125458
+> db.tip.find().count()
+403210
+> db.user.find().count()
+252898
+>
+
+
+
+Index on Tip and Review
+
+
+db.reviews.ensureIndex({"business_id":1})
+db.tip.ensureIndex({"business_id":1})
+
+
+

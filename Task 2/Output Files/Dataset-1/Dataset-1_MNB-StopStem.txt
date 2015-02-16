@@ -1,0 +1,11 @@
+=== 5-fold Cross-validation ===
+Correctly Classified Instances       50977               51.0219 %
+Incorrectly Classified Instances     48935               48.9781 %
+Kappa statistic                          0.3878
+Mean absolute error                      0.2136
+Root mean squared error                  0.371 
+Relative absolute error                 66.7466 %
+Root relative squared error             92.7581 %
+Coverage of cases (0.95 level)          85.6003 %
+Mean rel. region size (0.95 level)      49.1677 %
+Total Number of Instances            99912     
